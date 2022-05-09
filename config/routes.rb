@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  scope path: '/api' do
+    api_version(module: 'Api::V1', path: { value: 'v1' }, defaults: { format: 'json' }) do
+      resources :posts, only: [:index, :create]
+      resources :comments, only: [:show, :create]
+      post "/login", to: "users#login"
+      post "/signup", to: "users#create"
+    end
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
