@@ -1,4 +1,4 @@
-class Api::V1::CommmentSerializer < ActiveModel::Serializer
+class Api::V1::CommentSerializer < ActiveModel::Serializer
   type :comment
 
   attributes(
